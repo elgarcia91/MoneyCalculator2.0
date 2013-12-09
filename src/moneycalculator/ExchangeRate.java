@@ -1,21 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package moneycalculator;
 
 import java.util.Date;
 
-/**
- *
- * @author Diego
- */
 public class ExchangeRate {
 
-    private Date date;
-    private Currency from;
-    private Currency to;
-    private Number rate;
+    private final Date date;
+    private final Currency from;
+    private final Currency to;
+    private final Number rate;
 
     public ExchangeRate(Date date, Currency from, Currency to, Number rate) {
         this.date = date;
@@ -23,6 +15,20 @@ public class ExchangeRate {
         this.to = to;
         this.rate = rate;
     }
-    
-    
+
+    public Date getDate() {
+        return date;
+    }
+
+    public Currency getFrom() {
+        return from;
+    }
+
+    public Currency getTo() {
+        return to;
+    }
+
+    public Number getRate() {
+        return rate;
+    }
 }

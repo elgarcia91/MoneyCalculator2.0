@@ -1,6 +1,7 @@
 package moneycalculator;
 
 public class Currency {
+
     private String code;
     private String name;
     private String symbol;
