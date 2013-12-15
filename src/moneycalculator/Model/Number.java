@@ -1,4 +1,4 @@
-package moneycalculator;
+package moneycalculator.Model;
 
 public class Number {
 
@@ -35,7 +35,7 @@ public class Number {
     }
 
     private void reduce() {
-        PrimeCollection primeNumber = new PrimeCollection();
+        PrimeNumbers primeNumber = new PrimeNumbers();
         for (int prime : primeNumber) {
             while (isDivisible(prime)) {
                 this.numerator = this.numerator / prime;

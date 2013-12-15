@@ -1,8 +1,8 @@
-package moneycalculator;
+package moneycalculator.Model;
 
 import java.util.Iterator;
 
-public class PrimeCollection implements Iterable<Integer> {
+public class PrimeNumbers implements Iterable<Integer> {
 
     private int prime = 1;
 
