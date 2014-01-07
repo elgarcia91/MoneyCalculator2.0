@@ -23,4 +23,9 @@ public class Currency {
         this.name = name;
         this.symbol = symbol;
     }
+    
+    @Override
+    public String toString(){
+        return name + " " + code + " " + symbol; 
+    }
 }

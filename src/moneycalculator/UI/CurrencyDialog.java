@@ -1,6 +1,9 @@
 package moneycalculator.UI;
 
+import moneycalculator.Model.Currency;
+
 public interface CurrencyDialog {
 
-    public void execute();
+    public void dialog();
+    public Currency getCurrency();
 }
