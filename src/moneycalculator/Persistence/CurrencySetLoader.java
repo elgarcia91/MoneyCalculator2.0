@@ -4,5 +4,5 @@ import moneycalculator.Model.CurrencySet;
 
 public interface CurrencySetLoader {
 
-    public CurrencySet load();
+    public void load();
 }

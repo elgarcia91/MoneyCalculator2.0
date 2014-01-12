@@ -7,6 +7,7 @@ public class CurrencySet extends HashSet<Currency> {
     private static CurrencySet instance;
 
     private CurrencySet() {
+        super();
     }
 
     public static CurrencySet getInstance() {

@@ -3,7 +3,8 @@ package moneycalculator.UI.Console;
 import moneycalculator.Model.Money;
 import moneycalculator.UI.MoneyViewer;
 
-public class ConsoleMoneyViewer implements MoneyViewer{
+public class ConsoleMoneyViewer implements MoneyViewer {
+
     private Money money;
 
     @Override
@@ -14,5 +15,9 @@ public class ConsoleMoneyViewer implements MoneyViewer{
     public ConsoleMoneyViewer(Money money) {
         this.money = money;
     }
-      
+
+    @Override
+    public void setMoney(Money money) {
+        this.money = money;
+    }
 }

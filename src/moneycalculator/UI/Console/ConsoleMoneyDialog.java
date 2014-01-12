@@ -7,7 +7,8 @@ import moneycalculator.Model.Money;
 import moneycalculator.UI.CurrencyDialog;
 import moneycalculator.UI.MoneyDialog;
 
-public class ConsoleMoneyDialog implements MoneyDialog{
+public class ConsoleMoneyDialog implements MoneyDialog {
+
     private Money money;
     private Currency currency;
 
@@ -15,7 +16,9 @@ public class ConsoleMoneyDialog implements MoneyDialog{
     public void dialog() {
         System.out.println("Enter the amount: ");
         Scanner scanner = new Scanner(System.in);
-        Number amount = new Number(scanner.nextDouble()) {};
+        Number amount = new Number(scanner.nextDouble()) {
+        };
+        getCurrency();
         money = new Money(amount, currency);
     }
 
@@ -23,11 +26,10 @@ public class ConsoleMoneyDialog implements MoneyDialog{
     public Money getMoney() {
         return money;
     }
-    
-    private void getCurrency(){
+
+    private void getCurrency() {
         CurrencyDialog consoleCurrencyDialog = new ConsoleCurrencyDialog();
         consoleCurrencyDialog.dialog();
         currency = consoleCurrencyDialog.getCurrency();
     }
-
 }

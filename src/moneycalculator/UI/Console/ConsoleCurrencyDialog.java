@@ -6,6 +6,7 @@ import moneycalculator.Model.CurrencySet;
 import moneycalculator.UI.CurrencyDialog;
 
 public class ConsoleCurrencyDialog implements CurrencyDialog {
+
     private Currency currency;
 
     @Override
@@ -18,12 +19,12 @@ public class ConsoleCurrencyDialog implements CurrencyDialog {
             searchResult = currencies.searchCurrency(scanner.nextLine());
             if (searchResult == null) {
                 System.out.println("Not found any currency. Try again");
-            }else{
+            } else {
                 currency = searchResult;
             }
         }
     }
-    
+
     @Override
     public Currency getCurrency() {
         return currency;

@@ -88,9 +88,9 @@ public class Number {
         divDenominator = this.denominator * number.numerator;
         return new Number(divNumerator, divDenominator);
     }
-    
+
     @Override
-    public String toString(){
-        return String.valueOf(numerator/denominator);
+    public String toString() {
+        return String.valueOf(numerator / denominator);
     }
 }
