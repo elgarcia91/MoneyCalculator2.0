@@ -1,11 +1,12 @@
 package moneycalculator.UI.Swing;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import moneycalculator.Model.Currency;
 import moneycalculator.UI.CurrencyDialog;
-import javax.swing.JTextField;
 import moneycalculator.Model.CurrencySet;
 
 public class SwingCurrencyDialog extends JPanel implements CurrencyDialog {
@@ -16,7 +17,8 @@ public class SwingCurrencyDialog extends JPanel implements CurrencyDialog {
     }
 
     @Override
-    public void dialog() {
+    public void dialog(String label) {
+        this.add(new JLabel(label));
         this.add(createCurrencyField());
     }
 
@@ -25,22 +27,26 @@ public class SwingCurrencyDialog extends JPanel implements CurrencyDialog {
         return currency;
     }
 
-    private JTextField createCurrencyField() {
-        final JTextField text = new JTextField(10);
-        text.addKeyListener(new KeyListener() {
+    private JComboBox createCurrencyField() {
+        final JComboBox comboBox = new JComboBox();
+        fillComboBox(comboBox);
+        Currency selected = CurrencySet.getInstance().searchCurrency("usd");
+        comboBox.setSelectedItem(selected);
+        comboBox.addItemListener(new ItemListener() {
             @Override
-            public void keyTyped(KeyEvent ke) {
-            }
-
-            @Override
-            public void keyPressed(KeyEvent ke) {
-            }
-
-            @Override
-            public void keyReleased(KeyEvent ke) {
-                currency = CurrencySet.getInstance().searchCurrency(text.getText());
+            public void itemStateChanged(ItemEvent ie) {
+                if (ie.getStateChange() != ItemEvent.SELECTED) {
+                    return;
+                }
+                currency = CurrencySet.getInstance().searchCurrency((String) comboBox.getSelectedItem());
             }
         });
-        return text;
+        return comboBox;
+    }
+
+    private void fillComboBox(JComboBox comboBox) {
+        for (Currency currency : CurrencySet.getInstance()) {
+            comboBox.addItem(currency.getCode());
+        }
     }
 }

@@ -107,6 +107,6 @@ public class Number {
 
     @Override
     public String toString() {
-        return String.valueOf(numerator / denominator);
+        return String.valueOf((double)numerator/(double)denominator);
     }
 }

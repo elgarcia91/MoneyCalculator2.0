@@ -5,7 +5,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import moneycalculator.Model.Currency;
 import moneycalculator.Model.Money;
 import moneycalculator.Model.Number;
 import moneycalculator.UI.MoneyDialog;
@@ -13,7 +12,7 @@ import moneycalculator.UI.MoneyDialog;
 public class SwingMoneyDialog extends JPanel implements MoneyDialog {
 
     private String amount;
-    private Currency currency;
+    private SwingCurrencyDialog currencyDialog;
 
     public SwingMoneyDialog() {
         super(new FlowLayout());
@@ -27,7 +26,7 @@ public class SwingMoneyDialog extends JPanel implements MoneyDialog {
 
     @Override
     public Money getMoney() {
-        return new Money(new Number(new Double(Double.valueOf(amount))), currency);
+        return new Money(new Number(new Double(Double.valueOf(amount))), currencyDialog.getCurrency());
     }
 
     private JTextField createAmount() {
@@ -54,8 +53,8 @@ public class SwingMoneyDialog extends JPanel implements MoneyDialog {
 
     private JPanel createCurrencyDialog() {
         SwingCurrencyDialog panel = new SwingCurrencyDialog();
-        panel.dialog();
-        currency = panel.getCurrency();
+        panel.dialog("From: ");
+        currencyDialog = panel;
         return panel;
     }
 }

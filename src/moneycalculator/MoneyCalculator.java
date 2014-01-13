@@ -43,7 +43,7 @@ public class MoneyCalculator {
         ExchangeRate rate;
         moneyDialog.dialog();
         System.out.println("to: ");
-        currencyDialog.dialog();
+        currencyDialog.dialog("");
         rate = exchangeLoader.load(moneyDialog.getMoney().getCurrency(), currencyDialog.getCurrency());
         Money result = exchanger.exchange(moneyDialog.getMoney().getAmount(), rate);
         MoneyViewer moneyViewer = new ConsoleMoneyViewer(result);
@@ -68,9 +68,9 @@ public class MoneyCalculator {
         commands.add("calc", new Command() {
             @Override
             public void execute() {
-                Money money = frame.getMoney();
                 MoneyViewer viewer = frame.getMoneyViewer();
-                ExchangeRate rate = exchangeLoader.load(money.getCurrency(), frame.getCurrencyTo());
+                Money money = frame.getMoneyDialog().getMoney();
+                ExchangeRate rate = exchangeLoader.load(money.getCurrency(), frame.getCurrencyDialog().getCurrency());
                 Money result = exchanger.exchange(money.getAmount(), rate);
                 viewer.setMoney(result);
                 viewer.showMoney();

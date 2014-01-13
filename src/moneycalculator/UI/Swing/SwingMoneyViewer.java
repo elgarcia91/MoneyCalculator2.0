@@ -1,5 +1,7 @@
 package moneycalculator.UI.Swing;
 
+import java.awt.FlowLayout;
+import java.awt.PopupMenu;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import moneycalculator.Model.Money;
@@ -11,7 +13,8 @@ public class SwingMoneyViewer extends JPanel implements MoneyViewer {
     private JLabel label;
 
     public SwingMoneyViewer() {
-        label = new JLabel(" ");
+        super(new FlowLayout(FlowLayout.CENTER));
+        label = new JLabel("-");
     }
 
     @Override
@@ -21,6 +24,13 @@ public class SwingMoneyViewer extends JPanel implements MoneyViewer {
 
     @Override
     public void showMoney() {
-        label.setText(String.valueOf(money));
+        this.add(createComponents());
+    }
+
+    private JLabel createComponents() {
+        if (money != null) {
+            label.setText(String.valueOf(money));
+        }
+        return label;
     }
 }

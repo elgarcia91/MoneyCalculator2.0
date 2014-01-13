@@ -25,6 +25,13 @@ public class FileExchangeRateLoader implements ExchangeRateLoader {
     @Override
     public ExchangeRate load(Currency from, Currency to) {
         try {
+            if (!"EUR".equals(from.getCode())) {
+                
+                return null;
+            }
+            if (from.getClass().equals(to.getCode())) {
+                return new ExchangeRate(new Date(), from, to, new Number(1));
+            }
             BufferedReader reader = new BufferedReader(new FileReader(file));
             while (true) {
                 String line = reader.readLine().trim();
