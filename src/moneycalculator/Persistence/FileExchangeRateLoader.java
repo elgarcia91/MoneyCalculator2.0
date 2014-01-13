@@ -26,7 +26,7 @@ public class FileExchangeRateLoader implements ExchangeRateLoader {
     public ExchangeRate load(Currency from, Currency to) {
         try {
             if (!"EUR".equals(from.getCode())) {
-                
+
                 return null;
             }
             if (from.getClass().equals(to.getCode())) {
