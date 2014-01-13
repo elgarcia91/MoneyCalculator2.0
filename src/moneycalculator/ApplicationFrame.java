@@ -1,6 +1,7 @@
 package moneycalculator;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,10 +24,10 @@ public class ApplicationFrame extends JFrame {
     ApplicationFrame(ActionListenerFactory factory) {
         super("Money Calculator");
         this.factory = factory;
-        this.createComponents();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setSize(800, 200);
+        this.setSize(750, 200);
         this.setLocationRelativeTo(null);
+        this.createComponents();
         this.setVisible(true);
     }
 
@@ -37,7 +38,7 @@ public class ApplicationFrame extends JFrame {
     }
 
     private JPanel createInputPanel() {
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel(new FlowLayout());
         panel.add(new JLabel("Convert: "));
         panel.add(createSwingMoneyDialog());
         panel.add(new JLabel("To: "));
@@ -46,10 +47,10 @@ public class ApplicationFrame extends JFrame {
     }
 
     private JPanel createToolbar() {
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         panel.add(createCalculateButton());
         panel.add(createExitButton());
-        return null;
+        return panel;
 
     }
 

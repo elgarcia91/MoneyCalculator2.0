@@ -22,17 +22,22 @@ public class FileCurrencySetLoader implements CurrencySetLoader {
             Currency currency;
             BufferedReader reader = new BufferedReader(new FileReader(new File(file)));
             while (true) {
-                String line = reader.readLine().trim();
+                String line = reader.readLine();
                 if (line == null) {
                     break;
                 } else {
-                    String[] currencyLine = line.split(",");
-                    currency = new Currency(currencyLine[1], currencyLine[0], currencyLine[2]);
+                    String[] currencyLine = line.split("/");
+                    String code = currencyLine[1];
+                    String name = currencyLine[0];
+                    String sym = currencyLine[2];
+                    currency = new Currency(code, name, sym);
                     CurrencySet.getInstance().add(currency);
                 }
             }
         } catch (FileNotFoundException fn) {
+            System.out.println("File Not Found");
         } catch (IOException io) {
+            System.out.println("IOException");
         }
     }
 }

@@ -35,16 +35,32 @@ public class Number {
     }
 
     private void reduce() {
-        PrimeNumbers primeNumber = new PrimeNumbers();
-        for (int prime : primeNumber) {
+        int prime = 2;
+        while (this.numerator / 2 > prime && this.denominator / 2 > prime) {
             while (isDivisible(prime)) {
                 this.numerator = this.numerator / prime;
                 this.denominator = this.denominator / prime;
             }
-            if ((this.numerator / 2 < prime) && (this.denominator / 2 < prime)) {
-                break;
+            prime = getNextPrime(prime);
+        }
+    }
+
+    private int getNextPrime(int prime) {
+        while (true) {
+            prime++;
+            if (isPrime(prime)) {
+                return prime;
             }
         }
+    }
+
+    private boolean isPrime(int prime) {
+        for (int i = 2; i < prime - 1; i++) {
+            if (prime % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private boolean isDivisible(int prime) {

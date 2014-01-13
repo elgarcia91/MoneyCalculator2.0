@@ -20,7 +20,7 @@ import moneycalculator.UI.MoneyViewer;
 public class MoneyCalculator {
 
     private static void switchConsoleSwing(String[] args) {
-        if (args[0] == "0") {
+        if (args[0].equals("0")) {
             new MoneyCalculator().runConsole(args[1], args[2]);
         } else {
             new MoneyCalculator().runSwing(args[1], args[2]);

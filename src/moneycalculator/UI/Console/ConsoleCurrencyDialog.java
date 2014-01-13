@@ -21,6 +21,7 @@ public class ConsoleCurrencyDialog implements CurrencyDialog {
                 System.out.println("Not found any currency. Try again");
             } else {
                 currency = searchResult;
+                break;
             }
         }
     }
