@@ -30,8 +30,7 @@ public class SwingCurrencyDialog extends JPanel implements CurrencyDialog {
     private JComboBox createCurrencyField() {
         final JComboBox comboBox = new JComboBox();
         fillComboBox(comboBox);
-        Currency selected = CurrencySet.getInstance().searchCurrency("usd");
-        comboBox.setSelectedItem(selected);
+        currency = CurrencySet.getInstance().searchCurrency((String)comboBox.getSelectedItem());
         comboBox.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent ie) {

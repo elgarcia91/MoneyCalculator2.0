@@ -26,6 +26,11 @@ public class Number {
         reduce();
     }
 
+    public Number(Number number) {
+        this.numerator = number.numerator;
+        this.denominator = number.denominator;
+    }
+
     public long getNumerator() {
         return numerator;
     }
@@ -107,6 +112,6 @@ public class Number {
 
     @Override
     public String toString() {
-        return String.valueOf((double)numerator/(double)denominator);
+        return String.valueOf((double) numerator / (double) denominator);
     }
 }
